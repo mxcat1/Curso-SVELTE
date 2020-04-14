@@ -5,6 +5,8 @@
 /basicos/node_modules
 /.pnp
 .pnp.js
+#Proyect Files
+.idea
 
 # testing
 /coverage
