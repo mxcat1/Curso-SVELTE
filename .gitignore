@@ -4,6 +4,7 @@
 /node_modules
 /basicos/node_modules
 /componentes/node_modules
+/rutas/node_modules
 /.pnp
 .pnp.js
 #Proyect Files

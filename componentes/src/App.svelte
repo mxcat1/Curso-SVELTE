@@ -2,7 +2,7 @@
     import Header from './Design/Header.svelte'
     import CardGrid from './Post/CardGrid.svelte'
     import InputCustom from './Design/InputCustom.svelte'
-    import Boton from './Design/Boton.svelte'
+    import Jumbotron from './Design/Jumbotron.svelte'
 
     let color = "warning";
 
@@ -39,7 +39,6 @@
         }
         post=[nuevoPost,...post]
     }
-    const prueba=()=>alert("hola")
 </script>
 
 <svelte:head>
@@ -48,6 +47,29 @@
 
 <Header {color} titulo="Componente 1"/>
 <div class="container">
+    <Jumbotron nombre="Mi Contenido" let:mostrar={mostrar}>
+        <span slot="subtitulo">
+            Curso de svelte
+        </span>
+        <span slot="contenido">
+            Guia para el curso de svelte
+        </span>
+        <h2 slot="subcontenido">
+            SUBGuia para el contenido 2
+        </h2>
+<!--        Tomar Mucho encuenta los eventos en slot-->
+<!--        La parte de clss:mostrar no es necesario solo seria para mostrart un clase segun la variable de finida en el jumbotron-->
+        <div slot="muestra" class:mostrar>
+            {#if mostrar}
+                <hr>
+                <button class="btn btn-danger">Boton</button>
+            {:else}
+                <h2>Coloca el mosue encima</h2>
+            {/if}
+        </div>
+
+    </Jumbotron>
+
     <CardGrid {post}/>
     <form on:submit|preventDefault={agregarPost}>
 <!--        <input type="text" name="txtTitulo" id="txtTitulo" placeholder="Titulo" bind:value={titulo}>-->
@@ -57,6 +79,5 @@
         <InputCustom type="text" id="txtImagen" nombre="Imagen" placeholder="Imagen" value={imagen} on:input = {event => (imagen=event.target.value)}/>
         <InputCustom control="textarea" id="txtaDescripcion" nombre="Descripcion" placeholder="Descripcion" value={descripcion} on:input = {event => (descripcion=event.target.value)}/>
         <button class="btn btn-info" type="submit">Guardar</button>
-        <Boton on:click={prueba}/>
     </form>
 </div>
